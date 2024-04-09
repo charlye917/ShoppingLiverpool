@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ShoppinLiverpool</string>
+
+    <string name="generic_subtitle_error">Por el momento, no se pudo completar la solicitud. \nIntenta más tarde.</string>
 </resources>
