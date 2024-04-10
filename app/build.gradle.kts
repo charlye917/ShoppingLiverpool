@@ -1,8 +1,8 @@
-import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
-
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.kapt)
 }
 
 android {
@@ -15,13 +15,18 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        multiDexEnabled = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "BASE_URL","\"https://shoppapp.liverpool.com.mx/appclienteservices/services/v7/\"")
     }
 
     buildTypes {
+        debug {
+            applicationIdSuffix = ".debug"
+        }
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -35,6 +40,21 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        buildConfig = true
+    }
+    viewBinding {
+        enable = true
+    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+}
+
+kapt{
+    correctErrorTypes = true
 }
 
 dependencies {
@@ -44,6 +64,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.swiperefresh)
 
     //RETROFIT
     implementation(libs.gson)
@@ -58,10 +79,12 @@ dependencies {
     //VIEWMODEL
     implementation(libs.viewmodel)
     implementation(libs.livedata)
+    implementation(libs.savedstate)
     implementation(libs.coroutines)
 
     //HILT
-    implementation(libs.hilt)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
     //NAVIGATION
     implementation(libs.navigation.ui)
