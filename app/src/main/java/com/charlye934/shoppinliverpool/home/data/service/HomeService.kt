@@ -1,7 +1,7 @@
 package com.charlye934.shoppinliverpool.home.data.service
 
 import com.charlye934.shoppinliverpool.home.data.model.response.DataShoppingResponse
-import com.charlye934.shoppinliverpool.util.constants.ConstantsServices.SERVICE_GET_PRODUCTS
+import com.charlye934.shoppinliverpool.util.ConstantsServices.SERVICE_GET_PRODUCTS
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -13,8 +13,8 @@ interface HomeService {
         @Query("page-number") page: Int?,
         @Query("search-string") search: String?,
         @Query("sort-option") order: String?,
-        @Query("force-plp") forzarPlp: Boolean = false,
-        @Query("number-of-items-per-page") numberProducts: Int?,
-        @Query("cleanProductName")  clearName: String?
+        @Query("force-plp") forzarPlp: Boolean,
+        @Query("number-of-items-per-page") numberProducts: Int,
+        @Query("cleanProductName")  clearName: Boolean
     ): Response<DataShoppingResponse>
 }

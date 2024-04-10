@@ -6,7 +6,7 @@ import com.charlye934.shoppinliverpool.home.data.model.response.DataShoppingResp
 import com.charlye934.shoppinliverpool.home.data.service.HomeService
 import com.charlye934.shoppinliverpool.network.BaseError
 import com.charlye934.shoppinliverpool.network.Resources
-import com.charlye934.shoppinliverpool.util.constants.ConstantsServices.CODE_SUCCESSFUL
+import com.charlye934.shoppinliverpool.util.ConstantsServices.CODE_SUCCESSFUL
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -20,11 +20,11 @@ class HomeRepositoryImp @Inject constructor(
 
     override fun getShoppingInfo(
         page: Int?,
-        search: String,
-        order: String,
+        search: String?,
+        order: String?,
         forzarPlp: Boolean,
         numberProducts: Int,
-        clearName: String?
+        clearName: Boolean
     ): Flow<Resources<DataShoppingResponse>> = flow {
         emit(Resources.Loading)
         try {

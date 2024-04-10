@@ -6,11 +6,11 @@ import kotlinx.coroutines.flow.Flow
 
 interface HomeRepository {
     fun getShoppingInfo(
-        page: Int? = 0,
-        search: String = "",
-        order: String = "",
-        forzarPlp: Boolean = false,
-        numberProducts: Int = 40,
-        clearName: String? = ""
+        page: Int?,
+        search: String?,
+        order: String?,
+        forzarPlp: Boolean,
+        numberProducts: Int,
+        clearName: Boolean
     ): Flow<Resources<DataShoppingResponse>>
 }

@@ -2,9 +2,9 @@ package com.charlye934.shoppinliverpool.di
 
 import com.charlye934.shoppinliverpool.BuildConfig
 import com.charlye934.shoppinliverpool.home.data.service.HomeService
-import com.charlye934.shoppinliverpool.util.constants.ConstantsServices.BUILD_TYPE_DEBUG
-import com.charlye934.shoppinliverpool.util.constants.ConstantsServices.TIME_OUT
-import com.charlye934.shoppinliverpool.util.constants.ConstantsServices.USER_AGENT
+import com.charlye934.shoppinliverpool.util.ConstantsServices.BUILD_TYPE_DEBUG
+import com.charlye934.shoppinliverpool.util.ConstantsServices.TIME_OUT
+import com.charlye934.shoppinliverpool.util.ConstantsServices.USER_AGENT
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
